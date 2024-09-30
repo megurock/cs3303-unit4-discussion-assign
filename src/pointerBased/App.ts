@@ -1,4 +1,5 @@
 import ExpressionTree from './ExpressionTree'
+import ExpressionTreeVisitor from './ExpressionTreeVisitor'
 import InternalNode from './InternalNode'
 import LeafNode from './LeafNode'
 
@@ -14,7 +15,7 @@ export default class App {
 
     // Create an expression tree and output the expression
     const tree = new ExpressionTree(new InternalNode('-', leftBranch, 'c'))
-    const expression = tree.traverse()
+    const expression = tree.traverse(new ExpressionTreeVisitor())
     console.log(expression) // => ((4 * x * (2 * x + a)) - c)
   }
 }

@@ -1,4 +1,5 @@
 import ExpressionNode from './ExpressionNode'
+import type { Visitor } from './types'
 
 export default class LeafNode extends ExpressionNode {
   // prettier-ignore
@@ -15,5 +16,9 @@ export default class LeafNode extends ExpressionNode {
   }
   get rightOperand() {
     return this._rightOperand
+  }
+
+  accept(visitor: Visitor): void {
+    visitor.visitLeaf(this)
   }
 }

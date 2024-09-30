@@ -1,4 +1,6 @@
-export default class ExpressionNode {
+import type { Acceptor, Visitor } from './types'
+
+export default class ExpressionNode implements Acceptor {
   // prettier-ignore
   constructor(
     protected _operator: string,
@@ -9,5 +11,9 @@ export default class ExpressionNode {
   }
   get isLeaf() {
     return this._isLeaf
+  }
+
+  accept(visitor: Visitor): void {
+    // Overridden by subclasses
   }
 }

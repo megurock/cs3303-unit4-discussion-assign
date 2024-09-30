@@ -1,4 +1,5 @@
 import ExpressionNode from './ExpressionNode'
+import type { Visitor } from './types'
 
 export default class InternalNode extends ExpressionNode {
   // prettier-ignore
@@ -14,5 +15,9 @@ export default class InternalNode extends ExpressionNode {
   }
   get right() {
     return this._right
+  }
+
+  accept(visitor: Visitor): void {
+    visitor.visitInternal(this)
   }
 }
